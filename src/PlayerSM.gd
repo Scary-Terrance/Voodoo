@@ -1,7 +1,5 @@
 extends "res://src/StateMachine.gd"
 
-onready var animation_player = $Player_AnimationPlayer
-
 # Called when asset loaded into scene
 func _ready():
 	add_state("idle")
@@ -59,8 +57,6 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
-			if animation_player != null:
-				animation_player.play("idle")
+			parent.animation_player.play("idle")
 		states.run:
-			if animation_player != null:
-				animation_player.play("idle")
+			parent.animation_player.play("idle")

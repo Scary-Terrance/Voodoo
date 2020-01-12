@@ -72,18 +72,14 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 [node name="Player" type="KinematicBody2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Body" type="Node2D" parent="Player"]
-position = Vector2( -173.612, -110.344 )
-script = ExtResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="Player/Body"]
-position = Vector2( 173.612, 110.344 )
+[node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 4
 frame = 1
+script = ExtResource( 4 )
 
-[node name="Player_AnimationPlayer" type="AnimationPlayer" parent="Player/Body"]
+[node name="Player_AnimationPlayer" type="AnimationPlayer" parent="Player"]
 autoplay = "idle"
 anims/idle = SubResource( 1 )
 anims/walk = SubResource( 2 )

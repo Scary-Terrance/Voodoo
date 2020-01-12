@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var animation_player = $Player_AnimationPlayer
+
 # Exports for editor
 export var gravity = 128
 export var max_jump = -128
@@ -21,7 +23,9 @@ func _apply_gravity(delta):
 func _apply_movement(delta):
 	_apply_gravity(delta)
 	velocity.x = lerp(velocity.x, move_speed * direction, 0.25)
-	if direction != 0:
-		pass #$Body.scale.x = direction
+	if direction == -1:
+		$Sprite.flip_h = true
+	elif direction == 1:
+		$Sprite.flip_h = false
 	velocity = move_and_slide(velocity, UP)
 
