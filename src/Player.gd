@@ -13,7 +13,7 @@ const UP = Vector2(0, -1)
 # Player variables
 var velocity = Vector2(0, 0)
 var direction = 0
-var jumping = false
+var double_jump = true
 
 #onready var animation_player : AnimationPlayer = 
 

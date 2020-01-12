@@ -22,8 +22,9 @@ func _input(event):
 			parent.direction += -1
 			
 	elif [states.fall, states.jump].has(state):
-		if event.is_action_pressed("jump"):
+		if event.is_action_pressed("jump") && parent.double_jump == true:
 			parent.velocity.y = parent.max_jump
+			parent.double_jump = false
 		if event.is_action_pressed("left"):
 			parent.direction += -1
 		elif event.is_action_released("left"):	
@@ -59,11 +60,13 @@ func _get_transition(delta):
 				return states.idle
 		states.jump:
 			if parent.is_on_floor():
+				parent.double_jump = true
 				return states.idle
 			elif parent.velocity.y >= 0:
 				return states.fall
 		states.fall:
 			if parent.is_on_floor():
+				parent.double_jump = true
 				return states.idle
 			elif parent.velocity.y < 0:
 				return states.jump
@@ -73,4 +76,8 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			parent.animation_player.play("idle")
 		states.run:
-			parent.animation_player.play("idle")
+			parent.animation_player.play("walk")
+		states.jump:
+			parent.animation_player.play("jump")
+		states.fall:
+			parent.animation_player.play("fall")
