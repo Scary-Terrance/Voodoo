@@ -4,14 +4,20 @@ extends "res://src/StateMachine.gd"
 func _ready():
 	add_state("idle")
 	add_state("walk")
+	add_state("jump")
 	call_deferred("set_state", states.idle)
+
+func _input(event):
+	if [states.idle, states.walk].has(state):
+		if event.is_action_presset("jump"):
+			pass
+			#parent.velocity.y = 
 
 # Handle all logic based on current state
 func _state_logic(delta):
 	# Apply Gravity for the Player
 	parent._apply_gravity(delta)
 	parent._apply_movement()
-	
 
 # Handle logic to determine if we should change state
 func _get_transition(delta):

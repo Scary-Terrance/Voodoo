@@ -6,8 +6,8 @@
 [ext_resource path="res://PlayerSM.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 8.30182
-height = 15.6924
+radius = 8.82451
+height = 15.5374
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
@@ -84,7 +84,7 @@ hframes = 4
 frame = 1
 script = ExtResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+[node name="Player_AnimationPlayer" type="AnimationPlayer" parent="Player"]
 autoplay = "idle"
 anims/idle = SubResource( 2 )
 anims/walk = SubResource( 3 )
