@@ -3,9 +3,9 @@ extends KinematicBody2D
 onready var animation_player = $Player_AnimationPlayer
 
 # Exports for editor
-export var gravity = 128
-export var max_jump = -128
-export var move_speed = 64
+export var gravity = 320
+export var max_jump = -224
+export var move_speed = 96
 
 # Constants
 const UP = Vector2(0, -1)

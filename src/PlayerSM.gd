@@ -13,17 +13,25 @@ func _input(event):
 		if event.is_action_pressed("jump"):
 			parent.velocity.y = parent.max_jump
 		if event.is_action_pressed("left"):
-			parent.direction = -1
-			if event.is_action_pressed("right"):
-				parent.direction = 0
-		elif event.is_action_released("left"):
-			parent.direction = 0
+			parent.direction += -1
+		elif event.is_action_released("left"):	
+			parent.direction += 1
 		if event.is_action_pressed("right"):
-			parent.direction = 1
-			if event.is_action_pressed("left"):
-				parent.direction = 0
+			parent.direction += 1
 		elif event.is_action_released("right"):
-			parent.direction = 0
+			parent.direction += -1
+			
+	elif [states.fall, states.jump].has(state):
+		if event.is_action_pressed("jump"):
+			parent.velocity.y = parent.max_jump
+		if event.is_action_pressed("left"):
+			parent.direction += -1
+		elif event.is_action_released("left"):	
+			parent.direction += 1
+		if event.is_action_pressed("right"):
+			parent.direction += 1
+		elif event.is_action_released("right"):
+			parent.direction += -1
 
 # Handle all logic based on current state
 func _state_logic(delta):
@@ -42,7 +50,13 @@ func _get_transition(delta):
 			elif parent.velocity.x != 0:
 				return states.run
 		states.run:
-			pass
+			if !parent.is_on_floor():
+				if parent.velocity.y < 0:
+					return states.jump
+				elif parent.velocity.y > 0:
+					return states.fall
+			elif parent.velocity.x == 0:
+				return states.idle
 		states.jump:
 			if parent.is_on_floor():
 				return states.idle
