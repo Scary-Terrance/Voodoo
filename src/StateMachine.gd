@@ -1,5 +1,6 @@
 extends Node
 class_name StateMachine
+
 """
 State Machine for all entities
 

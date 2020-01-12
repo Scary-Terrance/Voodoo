@@ -25,6 +25,7 @@ func _input(event):
 		if event.is_action_pressed("jump") && parent.double_jump == true:
 			parent.velocity.y = parent.max_jump
 			parent.double_jump = false
+			parent.animation_player.play("jump")
 		if event.is_action_pressed("left"):
 			parent.direction += -1
 		elif event.is_action_released("left"):	
@@ -76,7 +77,7 @@ func _enter_state(new_state, old_state):
 		states.idle:
 			parent.animation_player.play("idle")
 		states.run:
-			parent.animation_player.play("walk")
+			parent.animation_player.play("run")
 		states.jump:
 			parent.animation_player.play("jump")
 		states.fall:

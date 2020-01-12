@@ -5,7 +5,7 @@ onready var animation_player = $Player_AnimationPlayer
 # Exports for editor
 export var gravity = 320
 export var max_jump = -224
-export var move_speed = 96
+export var move_speed = 128
 
 # Constants
 const UP = Vector2(0, -1)
