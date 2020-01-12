@@ -2,6 +2,9 @@ extends Node
 class_name StateMachine
 """
 State Machine for all entities
+
+Based on Tutorial from Game Endeavor on youtube
+https://www.youtube.com/channel/UCLweX1UtQjRjj7rs_0XQ2Eg
 """
 
 # Class Variables
