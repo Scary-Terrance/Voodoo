@@ -9,18 +9,18 @@
 [ext_resource path="res://animations/Player_jump.anim" type="Animation" id=7]
 [ext_resource path="res://animations/Player_fall.anim" type="Animation" id=8]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 8.51404
 height = 15.12
 
-[sub_resource type="NavigationPolygon" id=4]
+[sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 32, 0, 0, 0, 0, 32, 32, 32 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="TileSet" id=4]
 0/name = "square.png 0"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -29,12 +29,12 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
-0/navigation = SubResource( 4 )
+0/navigation = SubResource( 2 )
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -59,7 +59,7 @@ anims/jump = ExtResource( 7 )
 anims/run = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -71,24 +71,28 @@ zoom = Vector2( 0.3, 0.3 )
 
 [node name="Top" type="RayCast2D" parent="Player/WallRaycasts"]
 position = Vector2( 0, -8 )
-cast_to = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( -10, 0 )
 
 [node name="Bottom" type="RayCast2D" parent="Player/WallRaycasts"]
 position = Vector2( 0, 8 )
-cast_to = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( -10, 0 )
 
 [node name="RightWallRaycasts" type="Node2D" parent="Player/WallRaycasts"]
 
 [node name="Top" type="RayCast2D" parent="Player/WallRaycasts/RightWallRaycasts"]
 position = Vector2( 0, -8 )
-cast_to = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 10, 0 )
 
 [node name="Bottom" type="RayCast2D" parent="Player/WallRaycasts/RightWallRaycasts"]
 position = Vector2( 0, 8 )
-cast_to = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 10, 0 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 6 )
+tile_set = SubResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 14, 0, 0, 131071, 0, 0, 65550, 0, 0, 196607, 0, 0, 131072, 0, 0, 131086, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196622, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262158, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327694, 0, 0, 393230, 0, 0, 458766, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0, 720922, 0, 0, 720923, 0, 0, 720924, 0, 0 )
