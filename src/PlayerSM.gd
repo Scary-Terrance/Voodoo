@@ -22,6 +22,7 @@ func _input(event):
 			parent.direction += -1
 			
 	elif [states.fall, states.jump].has(state):
+		# Handle double jump scenario
 		if event.is_action_pressed("jump") && parent.double_jump == true:
 			parent.velocity.y = parent.max_jump
 			parent.double_jump = false
@@ -49,7 +50,7 @@ func _get_transition(delta):
 					return states.jump
 				elif parent.velocity.y > 0:
 					return states.fall
-			elif parent.velocity.x != 0:
+			elif parent.direction != 0:
 				return states.run
 		states.run:
 			if !parent.is_on_floor():
@@ -57,7 +58,7 @@ func _get_transition(delta):
 					return states.jump
 				elif parent.velocity.y > 0:
 					return states.fall
-			elif parent.velocity.x == 0:
+			elif parent.direction == 0:
 				return states.idle
 		states.jump:
 			if parent.is_on_floor():

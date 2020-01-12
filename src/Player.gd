@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var animation_player = $Player_AnimationPlayer
+onready var animation_player = $AnimationPlayer
 
 # Exports for editor
 export var gravity = 320
