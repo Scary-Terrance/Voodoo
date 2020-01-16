@@ -40,8 +40,8 @@ func _input(event):
 	elif state == states.wall_slide:
 		if event.is_action_pressed("jump"):
 			parent.velocity.y = parent.max_jump
-			parent.direction = -parent.wall_direction
-			parent.velocity.x += -parent.wall_direction * parent.move_speed
+			parent.direction += -parent.wall_direction
+			parent.velocity.x += parent.wall_direction * parent.move_speed
 
 # Handle all logic based on current state
 func _state_logic(delta):

@@ -25,11 +25,13 @@ func _apply_gravity(delta):
 	velocity.y += gravity * delta
 
 func _h_movement():
-	velocity.x = lerp(velocity.x, move_speed * direction, h_weight)
 	if direction == -1:
 		$Sprite.flip_h = true
+	elif direction == 0:
+		velocity.x = 0
 	elif direction == 1:
 		$Sprite.flip_h = false
+	velocity.x = lerp(velocity.x, move_speed * direction, h_weight)
 
 func _update_wall_direction():
 	var is_wall_left = _check_is_valid_wall(left_wall)
